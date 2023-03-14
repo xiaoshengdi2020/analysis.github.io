@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>五分钟上手之散点图</title>
+    <!-- 引入 echarts.js -->
+    <script src="http://124.220.209.43:8888/down/1Us4UK2YwtcW.js"></script>
+    <script src="http://124.220.209.43:8888/down/iuJ1B0gdeqHB.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-6">
+            <div style="height: 400px;width:700px;" id="Scatter1"></div>
+            <div style="height: 400px;width:700px;" id="Scatter2"></div>
+            <div style="height: 400px;width:700px;" id="Scatter3"></div>
+
+
+        </div>
+        <div class="col-sm-6">
+            <div style="height: 400px;width: 700px;" id="Scatter4"></div>
+            <div style="height: 400px;width: 700px;" id="Scatter5"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var MyScatter1 = echarts.init(document.getElementById('Scatter1'));
+        var MyScatter2 = echarts.init(document.getElementById('Scatter2'));
+        var MyScatter3 = echarts.init(document.getElementById('Scatter3'));
+        var MyScatter4 = echarts.init(document.getElementById('Scatter4'));
+        var MyScatter5 = echarts.init(document.getElementById('Scatter5'));
+
+        var data = [
+            ['5', 0.84, "H"],
+            ['5', 0.84, "H"],
+            ['5', 0.94, "H"],
+            ['5', 0.85, "H"],
+            ['5', 1.0, "H"],
+
+            ['15', 0.93, "G"],
+            ['15', 0.89, "F"],
+            ['15', 0.87, "F"],
+            ['15', 0.85, "F"],
+            ['15', 0.96, "F"],
+            ['15', 0.96, "F"],
+
+        ];
+
+
+        let scatterData1 = [
+
+            {name: "K1亮", data: [1.03, 0.86, 0.78, 0.01, 0.79, 0.82, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [1.02, 0.88, 0.81, 0.86, 0.77, 0.79, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [1.04, 0.90, 0.82, 0.84, 0.79, 0.84, 0.01], type: 'scatter', symbolSize: 10},
+
+            {name: "K1暗", data: [1.03, 0.02, 0.81, 0.01, 0.78, 0.76, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [1.04, 0.01, 0.85, 0.75, 0.02, 0.78, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [1.07, 0.02, 0.84, 0.78, 0.77, 0.71, 0.01], type: 'scatter', symbolSize: 10},
+
+
+            {name: "K2亮", data: [1.01, 0.96, 0.94, 0.80, 0.78, 0.99, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [1.02, 0.92, 0.97, 0.75, 0.80, 0.99, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [1.04, 0.94, 1.01, 0.80, 0.82, 0.95, 0.01], type: 'scatter', symbolSize: 10},
+
+            {name: "K2暗", data: [1.15, 1.06, 1.04, 0.80, 0.81, 1.04, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.10, 1,    1.09, 0.81, 0.89, 1.11, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.11, 1.02, 0.98, 0.81, 0.78, 0.94, 0.01], type: 'scatter', symbolSize: 10},
+
+
+            /*
+            * 3.85
+            * 3.67
+            * 3.21
+            * */
+            {name: "K1半小时", data: [0.01, 0.87, 0.84, 0.71, 0.68, 0.92, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1半小时", data: [1.16, 0.90, 0.88, 0.68, 0.67, 0.86, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1半小时", data: [1.18, 0.88, 0.87, 0.70, 0.55, 0.8,  0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1半小时", data: [1.06, 0.86, 0.87, 0.79, 0.75, 0.84, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1半小时", data: [1.09, 0.86, 0.86, 0.67, 0.78, 0.81, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1半小时", data: [1.11, 0.84, 0.84, 0.69, 0.69, 0.8,  0.01], type: 'scatter', symbolSize: 10},
+
+
+            {name: "K2半小时", data: [1.22, 1.22, 0.96, 0.87, 0.69, 1.01, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2半小时", data: [1.26, 1.20, 0.87, 0.90, 0.71, 1.03, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2半小时", data: [1.28, 1.17, 0.94, 0.96, 0.68, 1.04, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2半小时", data: [1.15, 0.99, 0.89, 0.84, 0.83, 0.95, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2半小时", data: [1.12, 0.99, 0.85, 0.79, 0.82, 0.96, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2半小时", data: [1.14, 1.04, 0.87, 0.72, 0.78, 0.89, 0.02], type: 'scatter', symbolSize: 10},
+        ]
+
+        //oneplus
+        let scatterData2 = [
+            {name: "K2亮", data: [1.02, 0.89, 1.02, 0.78, 0.76, 0.94, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [1.02, 0.89, 1.06, 0.78, 0.73, 0.97, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [1.01, 0.93, 1.03, 0.76, 0.77, 0.94, 0.01], type: 'scatter', symbolSize: 10},
+
+
+            {name: "K2暗", data: [1.11, 0.95, 1.21, 0.8, 0.8, 1, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.09, 0.89, 1.17, 0.88, 0.84, 1.08, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.11, 0.94, 1.08, 0.81, 0.85, 1.04, 0.02], type: 'scatter', symbolSize: 10},
+
+
+        ]
+
+        //华为mate30
+        let scatterData3 = [
+            {name: "K2亮", data: [0.98, 0.85, 1.02, 0.69, 0.77, 0.89, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [0.96, 0.81, 1.02, 0.64, 0.70, 0.88, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K2亮", data: [0.97, 0.85, 1.07, 0.56, 0.66, 0.93, 0.01], type: 'scatter', symbolSize: 10},
+
+
+            {name: "K2暗", data: [1.14, 0.97, 1.17, 0.87, 0.82, 0.99, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.13, 0.94, 1.21, 0.77, 0.78, 0.98, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K2暗", data: [1.17, 0.97, 1.25, 0.72, 0.73, 0.97, 0.01], type: 'scatter', symbolSize: 10},
+
+        ]
+
+
+        //HONOR Play3
+        let scatterData4 = [
+            {name: "K1亮", data: [1.02, 0.93, 0.85, 0.79, 0.76, 0.89, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [1.05, 0.94, 0.88, 0.72, 0.76, 0.9, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [1.02, 0.94, 0.89, 0.75, 0.79, 0.9, 0.01], type: 'scatter', symbolSize: 10},
+
+            {name: "K1暗", data: [1.07, 0.01, 0.85, 0.72, 0.75, 0.85, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [1.07, 0.97, 0.81, 0.69, 0.78, 0.89, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [1.05, 0.94, 0.89, 0.76, 0.01, 0.86, 0.01], type: 'scatter', symbolSize: 10},
+        ]
+
+
+        //三星 Note10
+        let scatterData5 = [
+            {name: "K1亮", data: [1.04, 0.85, 0.02, 0.61, 0.64, 0.69, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [0.02, 0.82, 0.01, 0.69, 0.63, 0.70, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1亮", data: [1.04, 0.81, 0.01, 0.67, 0.61, 0.74, 0.02], type: 'scatter', symbolSize: 10},
+
+            {name: "K1暗", data: [1.04, 0.92, 0.90, 0.53, 0.69, 0.75, 0.02], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [0.02, 0.02, 0.02, 0.59, 0.61, 0.74, 0.01], type: 'scatter', symbolSize: 10},
+            {name: "K1暗", data: [1.07, 0.75, 0.01, 0.55, 0.63, 0.78, 0.01], type: 'scatter', symbolSize: 10},
+        ]
+
+        var textStyle = {
+            color: '#333',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontFamily: '微软雅黑',
+            fontSize: 14,
+        };
+        selected = {
+            'K1': true,
+            'K2': true,
+            'K1亮': true,
+            'K1暗': true,
+            'K2亮': true,
+            'K2暗': true,
+        }
+        selected1 = {
+            'K1': true,
+            'K2': false,
+            'K1半小时': false,
+            'K2半小时': false,
+
+        }
+
+        option1 = {
+            color: ['#ff9900', '#ff6666', '#cc33cc', '#37A2FF', '#FF0087', '#FFBF00', '#339ca8'],
+            legend: {
+                //data: ["H","F","G"],
+                textStyle: {},
+                selected: selected1
+            },
+            title: {
+                text: 'vivoS9'
+            },
+            tooltip: {},
+            // dataZoom: {
+            //     type: 'inside',  //放大缩小x轴数值
+            // },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ["5", '15', '25', '45', '65', "70", "0"],
+                },
+            ],
+            yAxis: {
+                type: 'value',
+                name: 'T/C',
+                min: 0,
+            },
+            // series: [{
+            //     name: '',
+            //     data: data,
+            //     type: 'scatter',
+            //     symbolSize: 10
+            // }]
+            series: scatterData1,
+        };
+
+
+        option2 = {
+            color: ['#ff9900', '#ff6666', '#cc33cc', '#37A2FF', '#FF0087', '#FFBF00', '#339ca8'],
+            legend: {
+                textStyle: {},
+                selected: selected
+            },
+            title: {
+                text: '一加 oneplus 8'
+            },
+            tooltip: {},
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ["5", '15', '25', '45', '65', "70", "0"],
+                },
+            ],
+            yAxis: {
+                type: 'value',
+                name: 'T/C',
+                min: 0,
+            },
+            series: scatterData2,
+        };
+
+
+        option3 = {
+            color: ['#ff9900', '#ff6666', '#cc33cc', '#37A2FF', '#FF0087', '#FFBF00', '#339ca8'],
+            title: {
+                text: '华为mate30'
+            },
+            legend: {
+                //data: ["H","F","G"],
+                textStyle: {},
+                selected: selected
+            },
+            tooltip: {},
+            // dataZoom: {
+            //     type: 'inside',  //放大缩小x轴数值
+            // },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ["5", '15', '25', '45', '65', "70", "0"],
+                },
+            ],
+            yAxis: {
+                type: 'value',
+                name: 'T/C',
+                min: 0,
+            },
+            // series: [{
+            //     name: '',
+            //     data: data,
+            //     type: 'scatter',
+            //     symbolSize: 10
+            // }]
+            series: scatterData3,
+        };
+
+        option4 = {
+            color: ['#ff9900', '#ff6666', '#cc33cc', '#37A2FF', '#FF0087', '#FFBF00', '#339ca8'],
+            legend: {
+                textStyle: {},
+                selected: selected
+            },
+            title: {
+                text: 'HONOR Play3'
+            },
+            tooltip: {},
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ["5", '15', '25', '45', '65', "70", "0"],
+                },
+            ],
+            yAxis: {
+                type: 'value',
+                name: 'T/C',
+                min: 0,
+            },
+            series: scatterData4,
+        };
+
+
+        option5 = {
+            color: ['#ff9900', '#ff6666', '#cc33cc', '#37A2FF', '#FF0087', '#FFBF00', '#339ca8'],
+            legend: {
+                textStyle: {},
+                selected: selected
+            },
+            title: {
+                text: '三星 Note10'
+            },
+            tooltip: {},
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ["5", '15', '25', '45', '65', "70", "0"],
+                },
+            ],
+            yAxis: {
+                type: 'value',
+                name: 'T/C',
+                min: 0,
+            },
+            series: scatterData5,
+        };
+
+
+        MyScatter1.setOption(option1);
+        MyScatter2.setOption(option2);
+        MyScatter3.setOption(option3);
+        MyScatter4.setOption(option4);
+        MyScatter5.setOption(option5);
+    });
+</script>
+</body>
+</html>
